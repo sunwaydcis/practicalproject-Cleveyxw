@@ -59,17 +59,22 @@ object MainApp extends JFXApp3:
     loader.load()
     val roots = loader.getRoot[jfxs.layout.AnchorPane]
     this.roots.get.center = roots
+    
+  extension (value: Int)
+    def area: Double = 3.142 * value * value
+    
+  println(34.area)
 
-  val stringA = new StringProperty("hello") //publisher
-  val stringB = new StringProperty("sunway") //subscriber
-  val stringC = new StringProperty("sunway") //subscriber
-
-  stringA.onChange { (_, oldValue, newValue) =>
-    println(s"stringA changed from $oldValue to $newValue")
-  }
-
-  stringA.onChange { (_,_,_) =>
-    println(s"stringA has changed!!!!!!")
-  }
-
-  stringA.value = "world"
+//  val stringA = new StringProperty("hello") //publisher
+//  val stringB = new StringProperty("sunway") //subscriber
+//  val stringC = new StringProperty("sunway") //subscriber
+//
+//  stringA.onChange { (_, oldValue, newValue) =>
+//    println(s"stringA changed from $oldValue to $newValue")
+//  }
+//
+//  stringA.onChange { (_,_,_) =>
+//    println(s"stringA has changed!!!!!!")
+//  }
+//
+//  stringA.value = "world"
