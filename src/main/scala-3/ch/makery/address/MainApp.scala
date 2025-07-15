@@ -10,6 +10,7 @@ import scalafx.Includes.*
 import javafx.scene as jfxs
 import scalafx.beans.property.StringProperty
 import scalafx.collections.ObservableBuffer
+import scalafx.scene.image.Image
 import scalafx.stage.{Modality, Stage}
 
 object MainApp extends JFXApp3:
@@ -17,6 +18,7 @@ object MainApp extends JFXApp3:
   //Window Root Pane
   var roots: Option[scalafx.scene.layout.BorderPane] = None
 
+  var cssResource = getClass.getResource("view/DarkTheme.css")
   /**
    * The data as an observable list of Persons.
    */
@@ -49,8 +51,10 @@ object MainApp extends JFXApp3:
 
     stage = new PrimaryStage():
       title = "AddressApp"
+      icons += new Image(getClass.getResource("/images/book.png").toExternalForm)
       scene = new Scene():
         root = roots.get
+        stylesheets = Seq(cssResource.toExternalForm)
 
     // call to display PersonOverview when app start
     showPersonOverview()
@@ -79,6 +83,7 @@ object MainApp extends JFXApp3:
       initOwner(stage)
       scene = new Scene:
         root = roots2
+        stylesheets = Seq(cssResource.toExternalForm)
 
     control.dialogStage = dialog
     control.person = person
